@@ -249,7 +249,7 @@ app.get('/socios/v1/proyectos/:id/tareasPendientes', (req, res) => {
     });
 });
  //Consultar todas las tareas de un proyecto en específico segun su fecha asignada
- app.get('/socios/v1/proyectos/:id/:fechaAsign', (req, res) => {
+ app.get('/socios/v1/proyectos/:id/tareas/:fechaAsign', (req, res) => {
     const idProyecto = parseInt(req.params.id);
     const Fecha=req.params.fechaAsign;
 
@@ -298,13 +298,13 @@ app.get('/socios/v1/proyectos/:id_proyecto/tareasPag', (req, res) => {
         
         res.status(200).json({
             estado: 1,
-            mensaje: "Estas son las taras que pertenecen al proyecto separadas por página",
+            mensaje: "Tareas del proyecto encontradas y paginadas",
             tareas: tareasPaginadas
         })
     } else {
         res.status(404).json({
             estado: 0,
-            mensaje: "El proyecto no cuenta con tareas"
+            mensaje: "No se encontraron tareas para el proyecto especificado"
         })
     }
 });
